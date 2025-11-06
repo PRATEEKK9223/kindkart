@@ -1,0 +1,17 @@
+<%- layout('/layouts/main') %>
+
+<h2>All Donations</h2>
+<table class="table">
+  <thead><tr><th>ID</th><th>NGO</th><th>Donor</th><th>Items</th><th>Status</th></tr></thead>
+  <tbody>
+    <% donations.forEach(d => { %>
+      <tr>
+        <td><%= d._id %></td>
+        <td><%= d.ngo ? d.ngo.name : 'N/A' %></td>
+        <td><%= d.donor.name %> (<%= d.donor.contact %>)</td>
+        <td><%= d.items.length %></td>
+        <td><%= d.status %></td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>

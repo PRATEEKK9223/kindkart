@@ -1,0 +1,28 @@
+<%- layout('/layouts/main') %>
+
+<h2>Manage NGOs</h2>
+
+<form action="/admin/ngos" method="post" enctype="multipart/form-data" class="mb-4">
+  <div class="row g-2">
+    <div class="col"><input name="name" class="form-control" placeholder="Name" required></div>
+    <div class="col"><input name="city" class="form-control" placeholder="City"></div>
+    <div class="col"><input name="accepts" class="form-control" placeholder="Accepts comma separated (Food,Hygiene)"></div>
+  </div>
+  <div class="mb-2"><input name="address" class="form-control" placeholder="Address"></div>
+  <div class="mb-2"><input name="description" class="form-control" placeholder="Description"></div>
+  <div class="mb-2"><input type="file" name="logo" class="form-control"></div>
+  <button class="btn btn-primary">Create NGO</button>
+</form>
+
+<table class="table">
+  <thead><tr><th>Name</th><th>City</th><th>Accepts</th></tr></thead>
+  <tbody>
+    <% ngos.forEach(n => { %>
+      <tr>
+        <td><%= n.name %></td>
+        <td><%= n.city %></td>
+        <td><%= n.accepts.join(', ') %></td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>

@@ -1,0 +1,17 @@
+<% layout('layouts/main') -%>
+
+<div class="row">
+  <div class="col-md-6">
+    <img src="<%= item.imageUrl || 'https://via.placeholder.com/600x400?text=' + encodeURIComponent(item.name) %>" class="img-fluid">
+  </div>
+  <div class="col-md-6">
+    <h2><%= item.name %></h2>
+    <p><%= item.description %></p>
+    <p><strong>Impact:</strong> <%= item.impact %></p>
+
+    <div class="input-group mb-3">
+      <input id="qty" type="number" class="form-control" value="1" min="1" style="max-width:120px">
+      <button id="addBtn" class="btn btn-primary" data-item='<%- JSON.stringify({ _id: item._id, name: item.name }) %>'>Add to KindKart</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<%- layout('/layouts/main') %>
+
+<h2>Admin Dashboard</h2>
+<p>Recent donations</p>
+<table class="table">
+  <thead><tr><th>ID</th><th>NGO</th><th>Donor</th><th>Items</th><th>Date</th></tr></thead>
+  <tbody>
+    <% donations.forEach(d => { %>
+      <tr>
+        <td><%= d._id %></td>
+        <td><%= d.ngo ? d.ngo.name : 'N/A' %></td>
+        <td><%= d.donor.name %> (<%= d.donor.contact %>)</td>
+        <td><%= d.items.length %></td>
+        <td><%= d.createdAt.toLocaleString() %></td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>

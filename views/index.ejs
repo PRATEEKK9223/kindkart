@@ -1,0 +1,34 @@
+<% layout('layouts/main') -%>
+
+<div class="jumbotron text-center py-5">
+  <h1 class="display-5">Spread Kindness with KindKart</h1>
+  <p class="lead">Donate essentials to verified NGOs near you — fast, transparent, and accessible.</p>
+  <a class="btn btn-primary btn-lg" href="/items">Start Donating</a>
+</div>
+
+<div class="row">
+  <div class="col-md-8">
+    <h3>Top NGOs</h3>
+    <div class="row">
+      <% topNGOs.forEach(ngo => { %>
+        <div class="col-md-6 mb-3">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"><%= ngo.name %> <% if (ngo.verified) { %><span class="badge bg-success">Verified</span><% } %></h5>
+              <p class="card-text"><%= ngo.description %></p>
+              <a href="/ngos/<%= ngo._id %>" class="btn btn-sm btn-outline-primary">Donate Here</a>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <h3>Impact</h3>
+    <div class="card p-3">
+      <h4 class="mb-0"><%= totalDonatedItems %></h4>
+      <p class="text-muted">Items donated (demo)</p>
+    </div>
+  </div>
+</div>

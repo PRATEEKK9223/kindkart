@@ -1,0 +1,26 @@
+<% layout('layouts/main') -%>
+
+<div class="row">
+  <div class="col-md-8">
+    <h2><%= ngo.name %> <% if (ngo.verified) { %><span class="badge bg-success">Verified</span><% } %></h2>
+    <p><%= ngo.description %></p>
+    <p><strong>Accepts:</strong> <%= ngo.accepts.join(', ') %></p>
+    <p><strong>Address:</strong> <%= ngo.address %> <% if (ngo.city) { %>, <%= ngo.city %><% } %></p>
+  </div>
+  <div class="col-md-4">
+    <button class="btn btn-primary donate-here" data-ngo='<%- JSON.stringify({ _id: ngo._id, name: ngo.name }) %>'>Donate Here</button>
+    <a class="btn btn-outline-secondary" href="/ngos">Back</a>
+  </div>
+</div>
+
+<script>
+  document.querySelector('.donate-here')?.addEventListener('click', (ev) => {
+    const ngo = JSON.parse(ev.currentTarget.getAttribute('data-ngo'));
+    // set ngo id and redirect to cart
+    fetch('/').then(() => {
+      localStorage.setItem('selectedNGO', ngo._id);
+      alert('Selected NGO: ' + ngo.name + '. Now go to Cart and submit.');
+      window.location.href = '/cart';
+    });
+  });
+</script>

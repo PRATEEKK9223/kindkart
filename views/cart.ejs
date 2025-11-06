@@ -1,0 +1,36 @@
+<% layout('layouts/main') -%>
+
+<h2>Your KindKart</h2>
+<p class="text-muted">Review items before choosing an NGO</p>
+
+<div id="cart-wrapped">
+  <table class="table" id="cart-table">
+    <thead><tr><th>Item</th><th>Qty</th><th></th></tr></thead>
+    <tbody></tbody>
+  </table>
+
+  <div class="mb-3">
+    <label>Donor name (optional)</label>
+    <input id="donorName" class="form-control">
+  </div>
+  <div class="mb-3">
+    <label>Contact (phone/email)</label>
+    <input id="donorContact" class="form-control">
+  </div>
+
+  <div class="d-flex gap-2">
+    <a href="/items" class="btn btn-outline-secondary">Continue Shopping</a>
+
+    <form id="donateForm" action="/donations" method="post" style="display:inline;">
+      <input type="hidden" name="itemsJson" id="itemsJson">
+      <input type="hidden" name="ngoId" id="ngoId">
+      <input type="hidden" name="donorName" id="donorNameInput">
+      <input type="hidden" name="donorContact" id="donorContactInput">
+      <input type="hidden" name="preference" value="pickup">
+      <button id="proceedBtn" class="btn btn-primary" type="submit">Proceed to NGO Selection</button>
+    </form>
+  </div>
+
+  <hr>
+  <small class="text-muted">In this demo, clicking Proceed will ask you to enter an NGO ID manually (or pick from NGOs page). You can implement a modal selector in future builds.</small>
+</div>

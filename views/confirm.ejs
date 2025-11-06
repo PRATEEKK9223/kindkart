@@ -1,0 +1,18 @@
+<% layout('layouts/main') -%>
+
+<h2>Thank you! Donation recorded</h2>
+<p>Your donation to <strong><%= ngo.name %></strong> has been recorded with ID: <%= donation._id %></p>
+
+<div class="card">
+  <div class="card-body">
+    <h5>Donation summary</h5>
+    <ul>
+      <% donation.items.forEach(it => { %>
+        <li><%= it.name %> — Qty: <%= it.qty %></li>
+      <% }) %>
+    </ul>
+    <p><strong>Status:</strong> <%= donation.status %></p>
+    <a href="/stories" class="btn btn-outline-primary">See impact stories</a>
+    <button class="btn btn-success" onclick="window.print()">Download Kindness Certificate</button>
+  </div>
+</div>
